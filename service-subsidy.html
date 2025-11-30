@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>補助金・助成金申請支援 - ASHITA HARESORA′</title>
+<meta name="description" content="ASHITA HARESORA′|スタートアップ支援に力を注ぐ税理士・社労士事務所。税務・労務・補助金申請・相続対策・マネジメントまでトータルサポートします。">
+<meta name="keywords" content="税理士, 社労士, スタートアップ支援, 石川県, 金沢市, 石川県金沢市, バックオフィス支援, 法人化支援, 税務相談, 開業サポート">
+<!-- OGP -->
+<meta property="og:title" content="ASHITA HARESORA′|スタートアップ支援に強い税理士事務所">
+<meta property="og:description" content="スタートアップ・税務・労務・補助金申請・相続対策をトータルサポートするASHITA HARESORA′グループ。あなたの明日を晴れ空′に。">
+<meta property="og:image" content="images/ogp.jpg">  <!-- シェアされたときの画像 -->
+<meta property="og:url" content="https://your-site-url.com/">
+<meta property="og:type" content="website">
+<link rel="icon" href="images/Logo_1_w.svg" sizes="32x32" type="image/png">
+<link rel="icon" href="images/Logo_1_w.svg" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="images/Logo_1_w.svg">
+<style>
+    @font-face {
+  font-family: 'はれのそら明朝';
+  src: url('fonts/harenosora-mincho.woff2') format('woff2'),
+       url('fonts/harenosora-mincho.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  }
+body {
+  margin: 0;
+  font-family: "ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro",sans-serif;
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 画面高さを100%確保 */
+  margin: 0;
+}
+a { text-decoration: none; color: inherit; }
+
+/* ヘッダー */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 80px;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+  z-index: 300;
+}
+.pc-title {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  gap: 20px;
+  white-space: nowrap;
+  font-family:'はれのそら明朝', 'YakuHanMP', "A1 Mincho", "Yu Mincho", "游明朝体", "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "MS P明朝", "MS PMincho", serif;
+
+}
+.site-logo { height: 40px; width: auto; }
+.sp-title {
+  display: none;
+  flex-direction: column;
+  text-align: center; /* ← 中央寄せ */
+  font-size: 18px;
+  line-height: 1.3;
+  font-family:'はれのそら明朝', serif; /* ← フォント変更 */
+}
+
+/* ナビ */
+nav {
+  display: flex;
+  gap: 30px;
+  margin-left: auto;
+}
+nav a, .dropbtn { font-size: 16px; font-family: "ヒラギノ明朝 Pro", serif; }
+
+/* PC版ドロップダウン */
+.pc-dropdown {
+  position: relative;
+}
+.pc-dropdown .dropbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: black;
+}
+.pc-dropdown .arrow {
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid black;
+  transition: transform 0.3s;
+}
+.pc-dropdown.show .arrow { transform: rotate(180deg); }
+/* PC版ドロップダウン */
+.pc-dropdown .dropdown-overlay {
+  display: none;
+  position: fixed;  /* ← absolute → fixed */
+  top: 90px;        /* ヘッダーの高さ分 */
+  left: 0;
+  width: 100%;      /* 横幅いっぱい */
+  background: white;
+  flex-direction: column;
+  box-sizing: border-box;
+  z-index: 250;
+}
+.pc-dropdown.show .dropdown-overlay {
+  display: flex;
+}
+
+/* サブメニュー */
+.pc-dropdown .dropdown-overlay .submenu {
+  display: block;
+  padding: 8px 0;
+  padding-left: 895px;  /* ← 好きな数値に変えてね */
+  display: block;      /* インラインのままだとpaddingが効きにくいので追加 */
+}
+
+.nav-overlay {
+  display: none;
+}
+.close-btn {
+  display: none;
+}
+
+/* main を flex で残り領域に伸ばす */
+main {
+  flex: 1;
+  padding: 15px 40px 40px 40px;; /* 既存の padding */
+}
+main h1 { font-family: "ヒラギノ明朝 Pro", serif; font-size: 32px; font-weight: normal; }
+main h2 { 
+  font-family: "ヒラギノ明朝 Pro", serif; 
+  font-size: 24px; 
+  font-weight: normal; 
+  margin-left: 20px; /* ← ここでインデント調整 */
+  position: relative;
+  padding-left: 20px;
+  margin: 30px 0 15px;
+}
+main h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 1px;
+  background: #ccc; /* 全体の薄い線 */
+}
+.pc-text { display: block; }
+.sp-list { 
+  display: none; 
+  padding-left: 20px;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+/* footer */
+footer {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  border-top: 1px solid #ccc;
+  background-color: rgba(204,231,255,0.8);
+}
+.footer-buttons { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; }
+.footer-buttons a { padding: 6px 12px; border: 1px solid #333; border-radius: 4px; color: black; }
+
+/* ハンバーガー */
+.hamburger {
+  width: 32px; height: 24px;
+  display: none; flex-direction: column; justify-content: space-between;
+  background: none; border: none; cursor: pointer;
+}
+.hamburger span { display: block; width: 100%; height: 3px; background: black; }
+
+/* ------------------ スマホ版 ------------------ */
+@media screen and (max-width:768px) {
+  .pc-title { display: none; }
+  .pc-nav { display: none; }
+  .sp-title { display: flex; }
+
+  header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 10px 20px;
+  }
+
+  .sp-title {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    justify-content: center; /* タイトルを中央に寄せる */
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'はれのそら明朝', serif;
+    gap: 10px; /* ロゴとタイトルの間隔 */
+  }
+
+  .sp-title .site-logo {
+    position: absolute; /* ロゴを左に固定 */
+    left: 20px;          /* ヘッダー内の左側余白 */
+    height: 40px;
+    width: auto;
+  }
+
+  .sp-title .sp-text {
+    text-align: center; /* タイトル中央寄せ */
+  }
+
+  /* ハンバーガーは右端に固定 */
+  .hamburger {
+    display: flex;
+    position: relative;
+    margin-left: auto;
+    z-index: 1001;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background: black;
+    position: relative;
+  }
+
+  /* nav-overlayをスマホで全画面表示 */
+  .nav-overlay {
+    display: none;
+    position: fixed;   /* 画面に固定 */
+    top: 0;
+    left: 0;
+    width: 100%;      /* 横幅いっぱい */
+    height: 100%;     /* 高さも画面いっぱい */
+    background: white;
+    flex-direction: column; /* 縦並び */
+    padding: 20px 40px;    /* 上下左右余白 */
+    box-sizing: border-box;
+    overflow-y: auto; /* 内容が多い場合だけスクロール */
+    z-index: 999;
+  }
+  /* メニューリンクは横書き・縦並び */
+  .nav-overlay a {
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    padding: 10px 0;
+    line-height: 0.4;
+    writing-mode: horizontal-tb; /* 横書き強制 */
+    font-family: 'はれのそら明朝', "ヒラギノ明朝 Pro", serif;
+  }
+  .nav-overlay.active {
+    display: flex; /* メニュー開いたら表示 */
+  }
+  /* ▼ 一番上（ホーム）の上だけ余白を広くする */
+  .nav-overlay a:first-of-type {
+    padding-top: 10px;   /* ← 好きに調整OK */
+  }
+
+  /* ▼ 最後（プライバシーポリシー）の下だけ余白を広くする */
+  .nav-overlay a:last-of-type {
+    padding-bottom: 10px; /* ← 上と同じ値にすると綺麗 */
+  }
+
+  /* サブメニューはインデント */
+  .submenu-list a.submenu {
+    display: block;
+    font-size: 14px;
+    text-decoration: none;
+    color: black;
+    padding: 6px 0;
+    padding-left: 20px;   /* ←インデント量調整 */
+    line-height: 1.5;       /* ← 行間を広くする */
+  }
+
+  /* close-btn表示 */
+  .close-btn {
+    display: none; /* デフォルトは非表示 */
+    position: fixed; /* ← absolute → fixed に変更 */
+    cursor: pointer;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    font-size: 28px;
+    line-height: 32px;
+    text-align: center;
+    z-index: 10001;   /* メニューより前面に */
+    color: black;
+    font-weight: 200;
+  }
+  
+  main h1 { font-family: "ヒラギノ明朝 Pro", serif; font-size: 26px; font-weight: normal; }
+  main h2 { font-family: "ヒラギノ明朝 Pro", serif; font-size: 20px; font-weight: normal; }
+  .pc-text { display: none; }
+  .sp-list { display: block; }
+  
+  footer {
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box; /* 念のため */
+    width: 100vw; /* ビューポートの横幅に合わせる */
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="pc-title">
+    <img src="images/Logo_1.svg" alt="ロゴ" class="site-logo">
+    高野晶弘税理士事務所 はれそら社労士事務所
+  </div>
+  <div class="sp-title">
+    <img src="images/Logo_1.svg" alt="ロゴ" class="site-logo">
+    <div class="sp-text">
+      高野晶弘税理士事務所<br>
+      はれそら社労士事務所
+    </div>
+  </div>
+
+  <nav class="pc-nav">
+    <a href="index.html">ホーム</a>
+    <a href="news.html">お知らせ</a>
+
+    <!-- PC版ドロップダウン -->
+    <div class="dropdown pc-dropdown">
+      <a href="#" class="dropbtn">
+        各業務のご案内 <span class="arrow"></span>
+      </a>
+      <div class="dropdown-overlay">
+        <a href="service-startup.html" class="submenu">スタートアップ支援</a>
+        <a href="service-cloud.html" class="submenu">クラウド導入支援</a>
+        <a href="service-subsidy.html" class="submenu">補助金・助成金申請支援</a>
+        <a href="service-succession.html" class="submenu">相続計画・相続対策</a>
+        <a href="service-tax.html" class="submenu">税理士業務</a>
+        <a href="service-labor.html" class="submenu">社労士業務</a>
+        <a href="service-management.html" class="submenu">マネジメント</a>
+      </div>
+    </div>
+    <a href="contact.html">お問い合わせ</a>
+    <a href="access.html">アクセス</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+  </nav>
+
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav class="nav-overlay" id="navOverlay">
+    <a href="index.html">ホーム</a>
+    <a href="news.html">お知らせ</a>
+    <a href="#">各業務のご案内</a>
+
+    <!-- ▼★ サブメニュー -->
+    <div class="submenu-list">
+      <a href="service-startup.html" class="submenu">スタートアップ支援</a>
+      <a href="service-cloud.html" class="submenu">クラウド導入支援</a>
+      <a href="service-subsidy.html" class="submenu">補助金・助成金申請支援</a>
+      <a href="service-succession.html" class="submenu">相続計画・相続対策</a>
+      <a href="service-tax.html" class="submenu">税理士業務</a>
+      <a href="service-labor.html" class="submenu">社労士業務</a>
+      <a href="service-management.html" class="submenu">マネジメント</a>
+    </div>
+
+    <a href="contact.html">お問い合わせ</a>
+    <a href="access.html">アクセス</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+  </nav>
+  <div class="close-btn" id="closeBtn">×</div>
+</header>
+
+<main>
+  <h1>補助金・助成金申請支援</h1>
+    <h2>サポート内容</h2>
+      <!-- PC版 -->
+      <div class="pc-text">
+        &nbsp;&nbsp;・補助金の申請支援<br>
+        &nbsp;&nbsp;・助成金の申請支援<br>
+        &nbsp;&nbsp;・補助金、助成金の提案 など<br>
+      </div>
+      <!-- スマホ版 -->
+      <div class="sp-list">
+        ・補助金の申請支援<br>
+        ・助成金の申請支援<br>
+        ・補助金、助成金の提案 など<br>
+      </div>
+    <h2>支援フロー</h2>
+      <!-- PC版 -->
+      <div class="pc-text">
+        &nbsp;&nbsp;①ヒアリング(事業内容・規模・財務状況・従業員情報、希望の補助金・助成金の種類・要件・必要書類の確認 など)<br>
+        &nbsp;&nbsp;↓<br>
+        &nbsp;&nbsp;②希望補助金等に対する提案・見積提示<br>
+        &nbsp;&nbsp;↓<br>
+        &nbsp;&nbsp;③契約締結<br>
+        &nbsp;&nbsp;↓<br>
+        &nbsp;&nbsp;④補助金・助成金の申請支援<br>
+        &nbsp;&nbsp;↓<br>
+        &nbsp;&nbsp;⑤採択結果<br>
+      </div>
+      <!-- スマホ版 -->
+      <div class="sp-list">
+        ①ヒアリング(事業内容・規模・<br>
+        財務状況・従業員情報、<br>
+        希望の補助金・助成金の種類・要件・<br>
+        必要書類の確認 など)<br>
+        ↓<br>
+        ②希望補助金等に対する提案・<br>
+        見積提示<br>
+        ↓<br>
+        ③契約締結<br>
+        ↓<br>
+        ④補助金・助成金の申請支援<br>
+        ↓<br>
+        ⑤採択結果<br>
+      </div>
+    <h2>費用</h2>
+      <!-- PC版 -->
+      <div class="pc-text">
+        &nbsp;&nbsp;補助金・助成金の10%～ <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※サポート内容に応じて別途見積(提案・見積無料)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※採択されなかった場合、料金は発生しません<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※実費分は別途請求<br>
+      </div>
+      <!-- スマホ版 -->
+      <div class="sp-list">
+        補助金・助成金の10%～ <br>
+        &nbsp;&nbsp;※サポート内容に応じて別途見積<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(提案・見積無料)<br>
+        &nbsp;&nbsp;※採択されなかった場合、<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;料金は発生しません<br>
+        &nbsp;&nbsp;※実費分は別途請求<br>
+      </div>
+</main>
+
+<footer>
+  <div class="footer-buttons">
+    <a href="contact.html">お問い合わせ</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+  </div>
+  <div>
+    個人情報保護方針<br>
+    &copy; 2025 ASHITA HARESORA′グループ
+  </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // PC版ドロップダウン
+  const pcDrop = document.querySelector(".pc-dropdown");
+  const pcDropBtn = pcDrop.querySelector(".dropbtn");
+  pcDropBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    pcDrop.classList.toggle("show");
+  });
+
+  // スマホハンバーガー
+hamburger.addEventListener('click', () => {
+  navOverlay.classList.toggle('active');
+
+  if(navOverlay.classList.contains('active')){
+    closeBtn.style.display = 'block';   // クローズボタン表示
+    hamburger.style.display = 'none';   // ハンバーガー非表示
+  } else {
+    closeBtn.style.display = 'none';    // クローズボタン非表示
+    hamburger.style.display = 'flex';   // ハンバーガー表示
+  }
+});
+
+closeBtn.addEventListener('click', () => {
+  navOverlay.classList.remove('active');
+  closeBtn.style.display = 'none';
+  hamburger.style.display = 'flex';     // メニュー閉じたらハンバーガー表示
+});
+
+  // 外側クリックで閉じる
+  window.addEventListener("click", function(){
+    pcDrop.classList.remove("show");
+    nav.classList.remove("show");
+  });
+});
+</script>
+
+</body>
+</html>
