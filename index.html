@@ -114,7 +114,8 @@ background: black;
 }
 /* 閉じるボタン（最初は非表示） */
 .close-btn {
-  position: absolute;
+  display: none; /* デフォルトは非表示 */
+  position: fixed; /* ← absolute → fixed に変更 */
   top: 20px;
   right: 20px;
   width: 32px;
@@ -123,15 +124,14 @@ background: black;
   line-height: 32px;
   text-align: center;
   cursor: pointer;
-  z-index: 9999;   /* ← 最前面に */
-  display: none;
+  z-index: 10001;   /* ← 最前面に */
   color: black;
 }
 
-/* メニューが開いているときだけ表示 */
-.nav-overlay.active ~ .close-btn {
-  display: block;
+.close-btn.active {
+    display: block;
 }
+
 /* ナビオーバーレイ */
 .nav-overlay {
 position: absolute;
@@ -382,46 +382,48 @@ font-size: 16px;
 </head>
 <body>
 
-<div class="hero">
-  <img src="images/photo1.jpg" alt="ヒーロー画像">
-  <div class="hero-text">
-    高野晶弘税理士事務所
-    <span class="break-on-mobile">はれそら社労士事務所</span>
-    <div class="hero-subtitle">スタートアップ支援に力を注ぐ税理士・社労士事務所</div>
-    <div class="hero-sub2title">
-      ASHITA HARESORA′グループ<br>
-      アシタハレソラ′マネジメント
+<header>  
+  <div class="hero">
+    <img src="images/photo1.jpg" alt="ヒーロー画像">
+    <div class="hero-text">
+      高野晶弘税理士事務所
+      <span class="break-on-mobile">はれそら社労士事務所</span>
+      <div class="hero-subtitle">スタートアップ支援に力を注ぐ税理士・社労士事務所</div>
+      <div class="hero-sub2title">
+        ASHITA HARESORA′グループ<br>
+        アシタハレソラ′マネジメント
+      </div>
     </div>
   </div>
-</div>
 
-<div class="hamburger" id="hamburger">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-
-<nav class="nav-overlay" id="navOverlay">
-  <a href="index.html">ホーム</a>
-  <a href="news.html">お知らせ</a>
-  <a href="#">各業務のご案内</a>
-
-  <!-- ▼★ サブメニュー -->
-  <div class="submenu-list">
-    <a href="service-startup.html" class="submenu">スタートアップ支援</a>
-    <a href="service-cloud.html" class="submenu">クラウド導入支援</a>
-    <a href="service-subsidy.html" class="submenu">補助金・助成金申請支援</a>
-    <a href="service-succession.html" class="submenu">相続計画・相続対策</a>
-    <a href="service-tax.html" class="submenu">税理士業務</a>
-    <a href="service-labor.html" class="submenu">社労士業務</a>
-    <a href="service-management.html" class="submenu">マネジメント</a>
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 
-  <a href="contact.html">お問い合わせ</a>
-  <a href="access.html">アクセス</a>
-  <a href="privacy.html">プライバシーポリシー</a>
-</nav>
-<div class="close-btn" id="closeBtn"></div>
+  <nav class="nav-overlay" id="navOverlay">
+    <a href="index.html">ホーム</a>
+    <a href="news.html">お知らせ</a>
+    <a href="#">各業務のご案内・費用</a>
+
+    <!-- ▼★ サブメニュー -->
+    <div class="submenu-list">
+      <a href="service-startup.html" class="submenu">スタートアップ支援</a>
+      <a href="service-cloud.html" class="submenu">クラウド導入支援</a>
+      <a href="service-subsidy.html" class="submenu">補助金・助成金申請支援</a>
+      <a href="service-succession.html" class="submenu">相続計画・相続対策</a>
+      <a href="service-tax.html" class="submenu">税理士業務</a>
+      <a href="service-labor.html" class="submenu">社労士業務</a>
+      <a href="service-management.html" class="submenu">マネジメント</a>
+    </div>
+
+    <a href="contact.html">お問い合わせ</a>
+    <a href="access.html">アクセス</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+  </nav>
+  <div class="close-btn" id="closeBtn">×</div>
+</header>
 
 <div class="greeting-container">
   <!-- PC版 代表挨拶 -->
