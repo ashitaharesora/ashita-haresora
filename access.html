@@ -128,6 +128,24 @@ main {
   padding: 15px 40px 40px 40px;; /* 既存の padding */
 }
 main h1 { font-family: "ヒラギノ明朝 Pro", serif; font-size: 32px; font-weight: normal; }
+main h2 { 
+  font-family: "ヒラギノ明朝 Pro", serif; 
+  font-size: 20px; 
+  font-weight: normal; 
+  margin-left: 20px; /* ← ここでインデント調整 */
+  position: relative;
+  padding-left: 20px;
+  margin: 30px 0 15px;
+}
+main h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 1px;
+  background: #ccc; /* 全体の薄い線 */
+}
 .access-box {
   display: flex;
   flex-direction: column;
@@ -135,6 +153,9 @@ main h1 { font-family: "ヒラギノ明朝 Pro", serif; font-size: 32px; font-we
   font-size: 20px;
   align-items: center; 
   font-family: "ヒラギノ明朝 Pro"
+}
+.access-mobile {
+display: none;
 }
 .address {
   margin-bottom: 0px; /* ← 好きな値に調整可能（小さく） */
@@ -322,7 +343,12 @@ footer {
   
   main h1 { font-family: "ヒラギノ明朝 Pro", serif; font-size: 26px; font-weight: normal; }
   main h2 { font-family: "ヒラギノ明朝 Pro", serif; font-size: 20px; font-weight: normal; }
-  
+  .access-pc {
+  display: none;
+  }
+  .access-mobile {
+    display: block; /* ← 必須 */
+  }
   .access-box {
     flex-direction: column; /* 横並び → 縦並び */
     align-items: flex-start; /* 左揃え */
@@ -437,23 +463,72 @@ footer {
   <div class="close-btn" id="closeBtn">×</div>
 </header>
 
-<main>
+<main> 
   <h1>アクセス</h1>
-  <div class="access-box">
-    <p class="address">〒920-0865 石川県金沢市長町1丁目4-34 すみれハウス2階 5号室</p>
-    <div class="map-box" style="text-align:center; ">
-      <a href="https://maps.google.com/?q=石川県金沢市長町1丁目4-34 すみれハウス2階 5号室"
-        target="_blank"
-        class="map-btn">
-        Googleマップで開く
-      </a>
+  <div class="access-pc">
+    <h2>高野晶弘税理士事務所 はれそら社労士事務所</h2>
+    <div class="access-box">
+      <p class="address">〒921-8104 石川県金沢市野田町ワ210</p>
+      <div class="map-box" style="text-align:center; ">
+        <a href="https://maps.google.com/?q=石川県金沢市野田町ワ210"
+          target="_blank"
+          class="map-btn">
+          Googleマップで開く
+        </a>
+      </div>
+      <div class="info-box">
+        <p class="hours">【営業時間】9:30〜16:30</p>
+        <p class="holiday">【定休日】土日祝</p>
+      </div>
     </div>
-    <div class="info-box">
-      <p class="hours">【営業時間】9:30〜16:30</p>
-      <p class="holiday">【定休日】土日祝</p>
+    <h2>アシタハレソラ′マネジメント事務所</h2>
+    <div class="access-box">
+      <p class="address">〒920-0865 石川県金沢市長町1丁目4-34 すみれハウス2階 5号室</p>
+      <div class="map-box" style="text-align:center; ">
+        <a href="https://maps.google.com/?q=石川県金沢市長町1丁目4-34 すみれハウス2階 5号室"
+          target="_blank"
+          class="map-btn">
+          Googleマップで開く
+        </a>
+      </div>
+      <div class="info-box">
+        <p class="hours">【営業時間】9:30〜16:30</p>
+        <p class="holiday">【定休日】土日祝</p>
+      </div>
     </div>
   </div>
-
+  <div class="access-mobile">
+    <h2>高野晶弘税理士事務所<br>はれそら社労士事務所</h2>
+    <div class="access-box">
+      <p class="address">〒921-8104<br>石川県金沢市野田町ワ210</p>
+      <div class="map-box" style="text-align:center; ">
+        <a href="https://maps.google.com/?q=石川県金沢市野田町ワ210"
+          target="_blank"
+          class="map-btn">
+          Googleマップで開く
+        </a>
+      </div>
+      <div class="info-box">
+        <p class="hours">【営業時間】9:30〜16:30</p>
+        <p class="holiday">【定休日】土日祝</p>
+      </div>
+    </div>
+    <h2>アシタハレソラ′マネジメント<br>事務所</h2>
+    <div class="access-box">
+      <p class="address">〒920-0865<br>石川県金沢市長町1丁目4-34<br>すみれハウス2階 5号室</p>
+      <div class="map-box" style="text-align:center; ">
+        <a href="https://maps.google.com/?q=石川県金沢市長町1丁目4-34 すみれハウス2階 5号室"
+          target="_blank"
+          class="map-btn">
+          Googleマップで開く
+        </a>
+      </div>
+      <div class="info-box">
+        <p class="hours">【営業時間】9:30〜16:30</p>
+        <p class="holiday">【定休日】土日祝</p>
+      </div>
+    </div>
+  </div>
 </main>
 
 <footer>
